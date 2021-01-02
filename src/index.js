@@ -12,13 +12,14 @@ const defaultOptions = {
   rulePath: __dirname + "/../dict/fukushi.yml"
 };
 
+const data = yaml.safeLoad(fs.readFileSync(__dirname + "/../dict/fukushi.yml", "utf8"));
+
 function loadDictionaries(rulePath, baseDir) {
   if (typeof rulePath === "undefined" || rulePath ==="") {
     return null;
   }
   const expandedRulePath = untildify(rulePath);
   const dictionaries = [];
-  const data = yaml.safeLoad(fs.readFileSync(path.resolve(baseDir, expandedRulePath), "utf8"));
 
   data.dict.forEach(function (item) {
     var form = "";
